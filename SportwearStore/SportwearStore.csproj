@@ -102,5 +102,8 @@
     <Folder Include="EF\" />
     <Folder Include="Windows\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\mainfirst.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

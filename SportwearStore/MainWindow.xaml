@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SportwearStore"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="900" 
+        Height="1000" 
         Width="800">
     <Grid Background="#F5F5F5">
         <Grid.RowDefinitions>
@@ -32,17 +32,21 @@
         <TextBlock Grid.ColumnSpan="3"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Text="VITA SPORTIVA"
+                   Text="VIVA"
                    FontWeight="Bold"
                    FontSize="25"
                    Foreground="#000000"
                    FontStyle="Italic"/>
 
         <TextBox x:Name="txtSearch"
-                 Height="25"
+                 Height="30"
                  Width="200"
                  HorizontalAlignment="Right"
-                 Margin="0 0 10 0"/>
+                 Margin="0 0 10 0"
+                 Text=" &#128269; "
+                 VerticalContentAlignment="Center"
+                 MouseUp="TxtSearch_MouseUp"
+                 SelectionChanged="txtSearch_SelectionChanged"/>
 
         <!--Grid.Row = 1-->
         <Border Grid.ColumnSpan="3"
@@ -66,5 +70,18 @@
             <TextBlock Text="Тайтсы"
                        Margin="0 0 20 0"/>
         </StackPanel>
+        
+        <!--Grid.Row = 2-->
+        <Image Grid.Row="2"
+               Grid.ColumnSpan="3"
+               Source="/Source/mainfirst.png"
+               Width="800"
+               Height="450">
+            <Image.Style>
+                <Style>
+                    
+                </Style>
+            </Image.Style>
+        </Image>
     </Grid>
 </Window>
