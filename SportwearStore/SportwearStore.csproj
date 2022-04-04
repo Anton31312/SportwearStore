@@ -94,5 +94,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ClassHelper\" />
+    <Folder Include="EF\" />
+    <Folder Include="Windows\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
