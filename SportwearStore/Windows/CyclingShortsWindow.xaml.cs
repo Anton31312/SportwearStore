@@ -10,29 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SportwearStore
+namespace SportwearStore.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для CyclingShortsWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CyclingShortsWindow : Window
     {
-        public MainWindow()
+        public CyclingShortsWindow()
         {
             InitializeComponent();
-        }
-
-        private void TxtSearch_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            txtSearch.Text = "";
-        }
-
-        private void txtSearch_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
