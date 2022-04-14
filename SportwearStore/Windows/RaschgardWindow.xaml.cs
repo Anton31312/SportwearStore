@@ -23,5 +23,20 @@ namespace SportwearStore.Windows
         {
             InitializeComponent();
         }
+
+        private void txtSearch_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void txtSearch_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tbMainPage_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
