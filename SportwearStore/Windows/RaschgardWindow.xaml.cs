@@ -38,5 +38,20 @@ namespace SportwearStore.Windows
         {
 
         }
+
+        private void btnBag_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnLike_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void btnProfile_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
