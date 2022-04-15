@@ -10,15 +10,39 @@
         <Border VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Height="300"
-                Width="200">
+                Width="200"
+                CornerRadius="1"
+                Background="Transparent"
+                BorderThickness="0.6"
+                BorderBrush="#828282">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="0.15*"/>
                     <RowDefinition Height="0.1*"/>
                 </Grid.RowDefinitions>
-                <Image Source="Source/taitsy.png"/>
+                <Image Source="Source/sweatshirt_grey_1.jpeg"
+                       Height="300"
+                       Cursor="Hand">
+                 
+                </Image>
 
+                    <TextBlock Text="CВИТШОТ ИЗ ФЛИСА"
+                           Grid.Row="1"
+                           VerticalAlignment="Center"
+                           Margin="10 0 0 0"
+                           Cursor="Hand"
+                           FontWeight="Normal"
+                           Foreground="#545454"
+                           FontSize="12"/>
+
+                <TextBlock Text="3 500 ₽"
+                           Grid.Row="2"
+                           VerticalAlignment="Center"
+                           Margin="10 0 0 0"
+                           FontWeight="Normal"
+                           Foreground="#828282"
+                           FontSize="12"/>
             </Grid>
         </Border>
     </Grid>

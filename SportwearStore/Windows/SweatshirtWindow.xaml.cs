@@ -26,7 +26,9 @@ namespace SportwearStore.Windows
 
         private void tbMainPage_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            this.Close();
+            mainWindow.Show();
         }
 
         private void txtSearch_SelectionChanged(object sender, RoutedEventArgs e)
@@ -52,6 +54,13 @@ namespace SportwearStore.Windows
         private void btnProfile_MouseUp(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void tbBackMain_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            this.Close();
+            mainWindow.Show();
         }
     }
 }

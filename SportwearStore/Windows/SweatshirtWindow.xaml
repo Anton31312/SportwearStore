@@ -137,7 +137,9 @@
                             HorizontalAlignment="Center"
                             Orientation="Horizontal">
                     <TextBlock Text="Главная"
-                               FontSize="17"/>
+                               FontSize="17"
+                               x:Name="tbBackMain"
+                               MouseUp="tbBackMain_MouseUp"/>
 
                     <TextBlock Text=">"
                                FontSize="17"
@@ -149,14 +151,48 @@
                                Foreground="#B53752"/>
                 </StackPanel>
 
-                <ListView Grid.Row="1">
+                <!--Grid.Row = 1 Border product-->
+                <ListView Grid.Row="1"
+                          x:Name="lvProduct">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            
+                            <Border Height="300"
+                                    Width="200"
+                                    CornerRadius="1"
+                                    Background="Transparent"
+                                    BorderThickness="0.6"
+                                    BorderBrush="#828282">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="0.15*"/>
+                                        <RowDefinition Height="0.1*"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Source="Source/sweatshirt_grey_1.jpeg"
+                                           Height="300"
+                                           Cursor="Hand"/>
+
+                                    <TextBlock Text="CВИТШОТ ИЗ ФЛИСА"
+                                               Grid.Row="1"
+                                               VerticalAlignment="Center"
+                                               Margin="10 0 0 0"
+                                               Cursor="Hand"
+                                               FontWeight="Normal"
+                                               Foreground="#545454"
+                                               FontSize="12"/>
+
+                                    <TextBlock Text="3 500 ₽"
+                                               Grid.Row="2"
+                                               VerticalAlignment="Center"
+                                               Margin="10 0 0 0"
+                                               FontWeight="Normal"
+                                               Foreground="#828282"
+                                               FontSize="12"/>
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                
             </Grid>
         </Border>
         

@@ -26,10 +26,6 @@ namespace SportwearStore.Windows
             InitializeComponent();
         }
 
-        private void TxtSearch_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            txtSearch.Text = "";
-        }
 
         private void txtSearch_SelectionChanged(object sender, RoutedEventArgs e)
         {
@@ -38,7 +34,9 @@ namespace SportwearStore.Windows
 
         private void borderSvit_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow();
+            this.Close();
+            sweatshirtWindow.Show();
         }
 
         private void borderTop_MouseUp(object sender, MouseButtonEventArgs e)
@@ -63,7 +61,9 @@ namespace SportwearStore.Windows
 
         private void tbMainPage_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            this.Close();
+            mainWindow.Show();
         }
 
         private void btnLike_MouseUp(object sender, MouseButtonEventArgs e)
@@ -77,6 +77,33 @@ namespace SportwearStore.Windows
         }
 
         private void btnProfile_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tbSweat_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow();
+            this.Close();
+            sweatshirtWindow.Show();
+        }
+
+        private void tbRash_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tbCycling_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tbTop_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void tbTights_MouseUp(object sender, MouseButtonEventArgs e)
         {
 
         }
