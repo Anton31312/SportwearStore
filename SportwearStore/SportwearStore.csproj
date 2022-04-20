@@ -38,8 +38,17 @@
     <ApplicationIcon>mainicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,6 +67,93 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EF\Address.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Bucket.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Category.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\City.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Client.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Collection.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Color.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ColorProductPhoto.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Composition.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\CompositionOfTheMaterial.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Gender.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\House.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ManufactureCountry.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Material.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Product.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\ProductColor.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\RoleUser.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Season.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Size.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Street.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\Style.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EF\sysdiagrams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
@@ -131,6 +227,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="EF\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EF\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,7 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ClassHelper\" />
-    <Folder Include="EF\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Source\mainfirst.png" />
@@ -174,6 +277,102 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Source\sweatshirt_grey_1.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="products\CyclingShorts\cyclingshorts_blackgray_1.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_blackgray_2.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_blackgray_3.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_blue_1.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_blue_2.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_blue_3.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_blue_4.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_lime_1.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_lime_2.jpeg" />
+    <Resource Include="products\CyclingShorts\cyclingshorts_lime_3.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_black_1.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_black_2.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_black_3.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_gray_1.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_gray_2.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_gray_3.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_pink_1.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_pink_2.jpeg" />
+    <Resource Include="products\CyclingShorts\seamless_cyclingshorts_pink_3.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_black_1.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_black_2.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_black_3.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_grey_1.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_grey_2.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_grey_3.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_pink_1.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_pink_2.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_pink_3.jpeg" />
+    <Resource Include="products\Rashgard\rashgard_pink_4.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_blue_1.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_blue_2.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_blue_3.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_gray_1.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_gray_2.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_gray_3.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_lime_1.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_lime_2.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_lime_3.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_white_1.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_white_2.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_white_3.jpeg" />
+    <Resource Include="products\Sweatshirt\sweatshirt_white_4.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_black_1.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_black_2.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_black_3.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_gray_1.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_gray_2.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_gray_3.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_gray_4.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_pink_1.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_pink_2.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_pink_3.jpeg" />
+    <Resource Include="products\Tights\seamless_tights_pink_4.jpeg" />
+    <Resource Include="products\Tights\tights_blackgray_1.jpeg" />
+    <Resource Include="products\Tights\tights_blackgray_2.jpeg" />
+    <Resource Include="products\Tights\tights_blackgray_3.jpeg" />
+    <Resource Include="products\Tights\tights_coffee_1.jpeg" />
+    <Resource Include="products\Tights\tights_coffee_2.jpeg" />
+    <Resource Include="products\Tights\tights_coffee_3.jpeg" />
+    <Resource Include="products\Top\seamless_top_black_1.jpeg" />
+    <Resource Include="products\Top\seamless_top_black_2.jpeg" />
+    <Resource Include="products\Top\seamless_top_black_3.jpeg" />
+    <Resource Include="products\Top\seamless_top_black_4.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_black_1.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_black_2.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_black_3.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_gray_1.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_gray_2.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_gray_3.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_pink_1.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_pink_2.jpeg" />
+    <Resource Include="products\Top\seamless_top_box_pink_3.jpeg" />
+    <Resource Include="products\Top\seamless_top_gray_1.jpeg" />
+    <Resource Include="products\Top\seamless_top_gray_2.jpeg" />
+    <Resource Include="products\Top\seamless_top_gray_3.jpeg" />
+    <Resource Include="products\Top\seamless_top_gray_4.jpeg" />
+    <Resource Include="products\Top\seamless_top_pink_1.jpeg" />
+    <Resource Include="products\Top\seamless_top_pink_2.jpeg" />
+    <Resource Include="products\Top\seamless_top_pink_3.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EF\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="EF\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
