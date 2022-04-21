@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SportwearStore.EF;
+using SportwearStore.ClassHelper;
 
 namespace SportwearStore.Windows
 {
@@ -19,9 +21,22 @@ namespace SportwearStore.Windows
     /// </summary>
     public partial class SweatshirtWindow : Window
     {
+        List<Product> productList = new List<Product>();
+
         public SweatshirtWindow()
         {
             InitializeComponent();
+
+            Filter();
+        }
+
+        private void Filter()
+        {
+            productList = AppData.Context.Product.ToList();
+            productList = productList.
+                            Where(i => i.NameProduct.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+
+            lvProduct.ItemsSource = productList;
         }
 
         private void tbMainPage_MouseUp(object sender, MouseButtonEventArgs e)
@@ -33,12 +48,12 @@ namespace SportwearStore.Windows
 
         private void txtSearch_SelectionChanged(object sender, RoutedEventArgs e)
         {
-
+            Filter();
         }
 
         private void txtSearch_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            txtSearch.Text = "";
         }
 
         private void btnLike_MouseUp(object sender, MouseButtonEventArgs e)

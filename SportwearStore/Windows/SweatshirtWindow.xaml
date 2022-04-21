@@ -153,7 +153,8 @@
 
                 <!--Grid.Row = 1 Border product-->
                 <ListView Grid.Row="1"
-                          x:Name="lvProduct">
+                          x:Name="lvProduct"
+                          >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Height="300"
@@ -168,11 +169,18 @@
                                         <RowDefinition Height="0.15*"/>
                                         <RowDefinition Height="0.1*"/>
                                     </Grid.RowDefinitions>
-                                    <Image Source="Source/sweatshirt_grey_1.jpeg"
-                                           Height="300"
-                                           Cursor="Hand"/>
+                                    <Image x:Name="photoProduct"
+                                           Height="80">
+                                        <Image.Source>
+                                            <Binding Path ="ProductColor.ColorProductPhoto.PhotoPath">
+                                                <Binding.TargetNullValue>
+                                                    <ImageSource>/Source/picture.png</ImageSource>
+                                                </Binding.TargetNullValue>
+                                            </Binding>
+                                        </Image.Source>
+                                    </Image>
 
-                                    <TextBlock Text="CВИТШОТ ИЗ ФЛИСА"
+                                    <TextBlock Text="{Binding Path=NameProduct}"
                                                Grid.Row="1"
                                                VerticalAlignment="Center"
                                                Margin="10 0 0 0"
@@ -181,7 +189,7 @@
                                                Foreground="#545454"
                                                FontSize="12"/>
 
-                                    <TextBlock Text="3 500 ₽"
+                                    <TextBlock Text="{Binding Path=GetCost}"
                                                Grid.Row="2"
                                                VerticalAlignment="Center"
                                                Margin="10 0 0 0"

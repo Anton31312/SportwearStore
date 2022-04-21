@@ -67,6 +67,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClassHelper\AppData.cs" />
+    <Compile Include="ClassHelper\Product.cs" />
     <Compile Include="EF\Address.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -160,6 +162,9 @@
     <Compile Include="Windows\CyclingShortsWindow.xaml.cs">
       <DependentUpon>CyclingShortsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ProductWindow.xaml.cs">
+      <DependentUpon>ProductWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\RaschgardWindow.xaml.cs">
       <DependentUpon>RaschgardWindow.xaml</DependentUpon>
     </Compile>
@@ -192,6 +197,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\ProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\RaschgardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -246,9 +255,7 @@
   <ItemGroup>
     <Resource Include="Source\search.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ClassHelper\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Source\mainfirst.png" />
   </ItemGroup>
@@ -370,6 +377,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="Source\picture.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
