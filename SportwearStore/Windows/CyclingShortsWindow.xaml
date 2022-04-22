@@ -97,24 +97,36 @@
             <TextBlock Text="Свитшоты"
                        Margin="0 0 20 0"
                        Style="{DynamicResource MainMenu}"
-                       Cursor="Hand"/>
+                       Cursor="Hand"
+                       x:Name="tbSweat"
+                       MouseUp="tbSweat_MouseUp"/>
+
             <TextBlock Text="Рашгарды"
                        Margin="0 0 20 0"
                        Style="{DynamicResource MainMenu}"
-                       Cursor="Hand"/>
+                       Cursor="Hand"
+                       x:Name="tbRash"
+                       MouseUp="tbRash_MouseUp"/>
+
             <TextBlock Text="Велосипедки"
                        Margin="0 0 20 0"
                        Style="{DynamicResource MainMenu}"
                        Cursor="Hand"
                        TextDecorations="Underline"/>
+
             <TextBlock Text="Топы"
                        Margin="0 0 20 0"
                        Style="{DynamicResource MainMenu}"
-                       Cursor="Hand"/>
+                       Cursor="Hand"
+                       x:Name="tbTop"
+                       MouseUp="tbTop_MouseUp"/>
+
             <TextBlock Text="Тайтсы"
                        Margin="0 0 20 0"
                        Style="{DynamicResource MainMenu}"
-                       Cursor="Hand"/>
+                       Cursor="Hand"
+                       x:Name="tbTights"
+                       MouseUp="tbTights_MouseUp"/>
         </StackPanel>
 
         <!--Grid.Row = 2-->

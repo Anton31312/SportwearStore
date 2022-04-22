@@ -41,22 +41,30 @@ namespace SportwearStore.Windows
 
         private void borderTop_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            TopWindow topWindow = new TopWindow();
+            this.Close();
+            topWindow.Show();
         }
 
         private void borderBiker_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            CyclingShortsWindow cyclingShortsWindow = new CyclingShortsWindow();
+            this.Close();
+            cyclingShortsWindow.Show();
         }
 
         private void borderTaytsi_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            TightsWindow tightsWindow = new TightsWindow();
+            this.Close();
+            tightsWindow.Show();
         }
 
         private void borderRashgardy_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            RaschgardWindow raschgardWindow = new RaschgardWindow();
+            this.Close();
+            raschgardWindow.Show();
         }
 
         private void tbMainPage_MouseUp(object sender, MouseButtonEventArgs e)
@@ -90,22 +98,30 @@ namespace SportwearStore.Windows
 
         private void tbRash_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            RaschgardWindow raschgardWindow = new RaschgardWindow();
+            this.Close();
+            raschgardWindow.Show();
         }
 
         private void tbCycling_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            CyclingShortsWindow cyclingShortsWindow = new CyclingShortsWindow();
+            this.Close();
+            cyclingShortsWindow.Show();
         }
 
         private void tbTop_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            TopWindow topWindow = new TopWindow();
+            this.Close();
+            topWindow.Show();
         }
 
         private void tbTights_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            TightsWindow tightsWindow = new TightsWindow();
+            this.Close();
+            tightsWindow.Show();
         }
     }
 }

@@ -165,6 +165,7 @@
                     Content="ПЕРЕЙТИ В КАТАЛОГ"
                     FontFamily="Futura PT"
                     Margin="10"
+                    Style="{DynamicResource ButtonForMainPage}"
                     FontWeight="Bold"/>
         </StackPanel>
 
