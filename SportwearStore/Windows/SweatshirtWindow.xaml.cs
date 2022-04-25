@@ -36,7 +36,7 @@ namespace SportwearStore.Windows
             //productList = productList.
             //                Where(i => i.NameProduct.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
 
-            lvProduct.ItemsSource = productList;
+            lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("Свитшот"));
         }
 
         private void tbMainPage_MouseUp(object sender, MouseButtonEventArgs e)
@@ -80,30 +80,50 @@ namespace SportwearStore.Windows
 
         private void tbRash_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            RaschgardWindow raschgardWindow = new RaschgardWindow();
-            this.Close();
-            raschgardWindow.Show();
+            tbRash.TextDecorations = TextDecorations.Underline;
+            tbNameProduct.Text = "Рашгарды";
+            tbSweat.TextDecorations = null;
+            tbTop.TextDecorations = null;
+            tbTights.TextDecorations = null;
+            tbCycling.TextDecorations = null;
+            productList = AppData.Context.Clothes.ToList();
+            lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("рашгард"));
         }
 
         private void tbCycling_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            CyclingShortsWindow cyclingShortsWindow = new CyclingShortsWindow();
-            this.Close();
-            cyclingShortsWindow.Show();
+            tbCycling.TextDecorations = TextDecorations.Underline;
+            tbNameProduct.Text = "Велосипедки";
+            tbSweat.TextDecorations = null;
+            tbTop.TextDecorations = null;
+            tbTights.TextDecorations = null;
+            tbRash.TextDecorations = null;
+            productList = AppData.Context.Clothes.ToList();
+            lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("велосипедки") || i.NameProduct.Contains("Велосипедки"));
         }
 
         private void tbTop_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            TopWindow topWindow = new TopWindow();
-            this.Close();
-            topWindow.Show();
+            tbTop.TextDecorations = TextDecorations.Underline;
+            tbNameProduct.Text = "Топы";
+            tbSweat.TextDecorations = null;
+            tbRash.TextDecorations = null;
+            tbTights.TextDecorations = null;
+            tbCycling.TextDecorations = null;
+            productList = AppData.Context.Clothes.ToList();
+            lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("топ"));
         }
 
         private void tbTights_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            TightsWindow tightsWindow = new TightsWindow();
-            this.Close();
-            tightsWindow.Show();
+            tbTights.TextDecorations = TextDecorations.Underline;
+            tbNameProduct.Text = "Тайсты";
+            tbSweat.TextDecorations = null;
+            tbTop.TextDecorations = null;
+            tbRash.TextDecorations = null;
+            tbCycling.TextDecorations = null;
+            productList = AppData.Context.Clothes.ToList();
+            lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("Тайтсы") || i.NameProduct.Contains("тайтсы"));
         }
 
         private void lvProduct_MouseUp(object sender, MouseButtonEventArgs e)
@@ -111,6 +131,18 @@ namespace SportwearStore.Windows
             ProductWindow productWindow = new ProductWindow();
             this.Close();
             productWindow.Show();
+        }
+
+        private void tbSweat_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            tbSweat.TextDecorations = TextDecorations.Underline;
+            tbNameProduct.Text = "Свитшоты";
+            tbTights.TextDecorations = null;
+            tbTop.TextDecorations = null;
+            tbRash.TextDecorations = null;
+            tbCycling.TextDecorations = null;
+            productList = AppData.Context.Clothes.ToList();
+            lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("Свитшот"));
         }
     }
 }

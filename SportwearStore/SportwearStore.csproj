@@ -145,29 +145,13 @@
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\CyclingShortsWindow.xaml.cs">
-      <DependentUpon>CyclingShortsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\ProductWindow.xaml.cs">
       <DependentUpon>ProductWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\RaschgardWindow.xaml.cs">
-      <DependentUpon>RaschgardWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\SweatshirtWindow.xaml.cs">
       <DependentUpon>SweatshirtWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\TightsWindow.xaml.cs">
-      <DependentUpon>TightsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\TopWindow.xaml.cs">
-      <DependentUpon>TopWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\CyclingShortsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -187,19 +171,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\RaschgardWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\SweatshirtWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\TightsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\TopWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

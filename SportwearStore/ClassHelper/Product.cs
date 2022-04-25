@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SportwearStore.EF
 {
-    public partial class Product
+    public partial class Clothes
     {
         public string GetCountry { get => $"Страна производитель: {ManufactureCountry.NameCountry}"; }
         public string GetCost { get => $"{Price} ₽"; }
