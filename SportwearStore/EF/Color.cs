@@ -17,7 +17,7 @@ namespace SportwearStore.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Color()
         {
-            this.ProductColor = new HashSet<ProductColor>();
+            this.Clothes = new HashSet<Clothes>();
         }
     
         public int ID { get; set; }
@@ -25,6 +25,6 @@ namespace SportwearStore.EF
         public string HEX { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductColor> ProductColor { get; set; }
+        public virtual ICollection<Clothes> Clothes { get; set; }
     }
 }

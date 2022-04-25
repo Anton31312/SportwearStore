@@ -19,6 +19,6 @@ namespace SportwearStore.EF
         public int IDProduct { get; set; }
     
         public virtual Client Client { get; set; }
-        public virtual Product Product { get; set; }
+        public virtual Clothes Clothes { get; set; }
     }
 }

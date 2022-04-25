@@ -27,28 +27,23 @@ namespace SportwearStore.EF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Bucket> Bucket { get; set; }
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Clothes> Clothes { get; set; }
         public virtual DbSet<Collection> Collection { get; set; }
         public virtual DbSet<Color> Color { get; set; }
         public virtual DbSet<Composition> Composition { get; set; }
         public virtual DbSet<CompositionOfTheMaterial> CompositionOfTheMaterial { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
-        public virtual DbSet<House> House { get; set; }
         public virtual DbSet<ManufactureCountry> ManufactureCountry { get; set; }
         public virtual DbSet<Material> Material { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductColor> ProductColor { get; set; }
         public virtual DbSet<RoleUser> RoleUser { get; set; }
         public virtual DbSet<Season> Season { get; set; }
         public virtual DbSet<Size> Size { get; set; }
-        public virtual DbSet<Street> Street { get; set; }
         public virtual DbSet<Style> Style { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<ColorProductPhoto> ColorProductPhoto { get; set; }
+        public virtual DbSet<ProductPhoto> ProductPhoto { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

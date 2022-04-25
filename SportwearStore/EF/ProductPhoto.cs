@@ -12,22 +12,11 @@ namespace SportwearStore.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class House
+    public partial class ProductPhoto
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public House()
-        {
-            this.Address = new HashSet<Address>();
-        }
+        public int IDProduct { get; set; }
+        public string PhotoPath { get; set; }
     
-        public int ID { get; set; }
-        public int IDStreet { get; set; }
-        public int HouseNumber { get; set; }
-        public int IDCity { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Address> Address { get; set; }
-        public virtual City City { get; set; }
-        public virtual Street Street { get; set; }
+        public virtual Clothes Clothes { get; set; }
     }
 }

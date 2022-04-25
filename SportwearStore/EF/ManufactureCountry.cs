@@ -17,13 +17,13 @@ namespace SportwearStore.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ManufactureCountry()
         {
-            this.Product = new HashSet<Product>();
+            this.Clothes = new HashSet<Clothes>();
         }
     
         public int ID { get; set; }
         public string NameCountry { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product { get; set; }
+        public virtual ICollection<Clothes> Clothes { get; set; }
     }
 }

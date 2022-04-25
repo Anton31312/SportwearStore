@@ -167,6 +167,15 @@
                 <ListView Grid.Row="1"
                           x:Name="lvProduct"
                           MouseUp="lvProduct_MouseUp">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" 
+                                        VerticalAlignment="Top" 
+                                        HorizontalAlignment="Left" 
+                                        Width="558"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Height="300"

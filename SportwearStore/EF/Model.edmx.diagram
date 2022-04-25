@@ -4,47 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="724f4047aedd4448b55d810967039fd9" Name="Diagram1">
-        <EntityTypeShape EntityType="SportswearStoreModel.Address" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Bucket" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Category" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.City" Width="1.5" PointX="1.5" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Client" Width="1.5" PointX="6" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Collection" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Color" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Composition" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.CompositionOfTheMaterial" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Gender" Width="1.5" PointX="3.75" PointY="23" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.House" Width="1.5" PointX="1.5" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.ManufactureCountry" Width="1.5" PointX="3.75" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Material" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Product" Width="1.5" PointX="6" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.ProductColor" Width="1.5" PointX="8.25" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.RoleUser" Width="1.5" PointX="3.75" PointY="25.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Season" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Size" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Street" Width="1.5" PointX="1.5" PointY="22.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.Style" Width="1.5" PointX="3.75" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SportswearStoreModel.ColorProductPhoto" Width="1.5" PointX="10.5" PointY="2.875" IsExpanded="true" />
-        <AssociationConnector Association="SportswearStoreModel.FK_Address_House" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_Client_Address" ManuallyRouted="false" />
+      <Diagram DiagramId="43bb805c733644fba6cb35a4877764f9" Name="Diagram1">
+        <EntityTypeShape EntityType="SportswearStoreModel.Bucket" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Category" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Client" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Clothes" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Collection" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Color" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Composition" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.CompositionOfTheMaterial" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Gender" Width="1.5" PointX="0.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.ManufactureCountry" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Material" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.RoleUser" Width="1.5" PointX="0.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Season" Width="1.5" PointX="0.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Size" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.Style" Width="1.5" PointX="0.75" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SportswearStoreModel.ProductPhoto" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
         <AssociationConnector Association="SportswearStoreModel.FK_Bucket_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_Bucket_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_House_City" ManuallyRouted="false" />
+        <AssociationConnector Association="SportswearStoreModel.FK_Bucket_Clothes" ManuallyRouted="false" />
         <AssociationConnector Association="SportswearStoreModel.FK_Client_Gender" ManuallyRouted="false" />
         <AssociationConnector Association="SportswearStoreModel.FK_Client_RoleUser" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_Product_Collection" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_ProductColor_Color" ManuallyRouted="false" />
+        <AssociationConnector Association="SportswearStoreModel.FK_Clothes_Collection" ManuallyRouted="false" />
+        <AssociationConnector Association="SportswearStoreModel.FK_Clothes_Color" ManuallyRouted="false" />
+        <AssociationConnector Association="SportswearStoreModel.FK_Clothes_ManufactureCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="SportswearStoreModel.FK_Clothes_Material" ManuallyRouted="false" />
+        <AssociationConnector Association="SportswearStoreModel.FK_Clothes_Season" ManuallyRouted="false" />
+        <AssociationConnector Association="SportswearStoreModel.FK_Clothes_Style" ManuallyRouted="false" />
+        <AssociationConnector Association="SportswearStoreModel.FK_ProductPhoto_Clothes" ManuallyRouted="false" />
         <AssociationConnector Association="SportswearStoreModel.FK_CompositionOfTheMaterial_Composition" ManuallyRouted="false" />
         <AssociationConnector Association="SportswearStoreModel.FK_CompositionOfTheMaterial_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_House_Street" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_Product_ManufactureCountry" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_Product_Material" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_Product_Season" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_Product_Style" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_ProductColor_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="SportswearStoreModel.FK_ColorProductPhoto_ProductColor" ManuallyRouted="false" />
         <AssociationConnector Association="SportswearStoreModel.CategoryProduct" ManuallyRouted="false" />
         <AssociationConnector Association="SportswearStoreModel.SizeProduct" ManuallyRouted="false" />
         <AssociationConnector Association="SportswearStoreModel.SuitableProducts" ManuallyRouted="false" />

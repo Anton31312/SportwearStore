@@ -4,18 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище SportswearStoreModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Entrance" Type="int" Nullable="false" />
-          <Property Name="Flat" Type="int" Nullable="false" />
-          <Property Name="Floor" Type="int" Nullable="false" />
-          <Property Name="IDHouse" Type="int" Nullable="false" />
-          <Property Name="MailIndex" Type="nchar" MaxLength="6" Nullable="false" />
-        </EntityType>
+      <Schema Namespace="Хранилище SportswearStoreModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bucket">
           <Key>
             <PropertyRef Name="ID" />
@@ -39,13 +28,6 @@
           <Property Name="IDProduct" Type="int" Nullable="false" />
           <Property Name="IDCategory" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="City">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CityName" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="ID" />
@@ -58,12 +40,29 @@
           <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="Phone" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="IDAddress" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="DateRegistration" Type="date" Nullable="false" />
           <Property Name="Login" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="IDRole" Type="int" Nullable="false" />
           <Property Name="IDGender" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clothes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameProduct" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Articul" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IDColor" Type="int" Nullable="false" />
+          <Property Name="IDCollection" Type="int" Nullable="false" />
+          <Property Name="IDCountry" Type="int" Nullable="false" />
+          <Property Name="IDSeason" Type="int" Nullable="false" />
+          <Property Name="IDMaterial" Type="int" Nullable="false" />
+          <Property Name="IDStyle" Type="int" Nullable="false" />
+          <Property Name="MainPhoto" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Collection">
           <Key>
@@ -79,16 +78,6 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameColor" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="HEX" Type="nchar" MaxLength="8" Nullable="false" />
-        </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "SportswearStore.dbo.ColorProductPhoto" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-        <EntityType Name="ColorProductPhoto">
-          <Key>
-            <PropertyRef Name="IDColorPhoto" />
-            <PropertyRef Name="PhotoPath" />
-          </Key>
-          <Property Name="IDColorPhoto" Type="int" Nullable="false" />
-          <Property Name="PhotoPath" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="Composition">
           <Key>
@@ -113,15 +102,6 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameGender" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="House">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IDStreet" Type="int" Nullable="false" />
-          <Property Name="HouseNumber" Type="int" Nullable="false" />
-          <Property Name="IDCity" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="ManufactureCountry">
           <Key>
             <PropertyRef Name="ID" />
@@ -136,28 +116,15 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameMaterial" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="Product">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "SportswearStore.dbo.ProductPhoto" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ProductPhoto">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="IDProduct" />
+            <PropertyRef Name="PhotoPath" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameProduct" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ArticleProduct" Type="nchar" MaxLength="8" Nullable="false" />
-          <Property Name="IDCollection" Type="int" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="250" />
-          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="IDMaterial" Type="int" Nullable="false" />
-          <Property Name="IDStyle" Type="int" Nullable="false" />
-          <Property Name="IDSeason" Type="int" Nullable="false" />
-          <Property Name="IDManufacturerCountry" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProductColor">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IDProduct" Type="int" Nullable="false" />
-          <Property Name="IDColor" Type="int" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="RoleUser">
           <Key>
@@ -188,13 +155,6 @@
           <Property Name="IDProduct" Type="int" Nullable="false" />
           <Property Name="IDSize" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Street">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameStreet" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
         <EntityType Name="Style">
           <Key>
             <PropertyRef Name="ID" />
@@ -220,18 +180,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_Address_House">
-          <End Role="House" Type="Self.House" Multiplicity="1" />
-          <End Role="Address" Type="Self.Address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="House">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Address">
-              <PropertyRef Name="IDHouse" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Bucket_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="Bucket" Type="Self.Bucket" Multiplicity="*" />
@@ -244,11 +192,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Bucket_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK_Bucket_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
           <End Role="Bucket" Type="Self.Bucket" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="Clothes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Bucket">
@@ -268,27 +216,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CategoryProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK_CategoryProduct_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
           <End Role="CategoryProduct" Type="Self.CategoryProduct" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="Clothes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="CategoryProduct">
               <PropertyRef Name="IDProduct" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Client_Address">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Client">
-              <PropertyRef Name="IDAddress" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -316,15 +252,75 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ColorProductPhoto_ProductColor">
-          <End Role="ProductColor" Type="Self.ProductColor" Multiplicity="1" />
-          <End Role="ColorProductPhoto" Type="Self.ColorProductPhoto" Multiplicity="*" />
+        <Association Name="FK_Clothes_Collection">
+          <End Role="Collection" Type="Self.Collection" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ProductColor">
+            <Principal Role="Collection">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ColorProductPhoto">
-              <PropertyRef Name="IDColorPhoto" />
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDCollection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Color">
+          <End Role="Color" Type="Self.Color" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Color">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_ManufactureCountry">
+          <End Role="ManufactureCountry" Type="Self.ManufactureCountry" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManufactureCountry">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Season">
+          <End Role="Season" Type="Self.Season" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Season">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDSeason" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Style">
+          <End Role="Style" Type="Self.Style" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDStyle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -352,119 +348,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_House_City">
-          <End Role="City" Type="Self.City" Multiplicity="1" />
-          <End Role="House" Type="Self.House" Multiplicity="*" />
+        <Association Name="FK_ProductPhoto_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
+          <End Role="ProductPhoto" Type="Self.ProductPhoto" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="City">
+            <Principal Role="Clothes">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="IDCity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_House_Street">
-          <End Role="Street" Type="Self.Street" Multiplicity="1" />
-          <End Role="House" Type="Self.House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Street">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="IDStreet" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Collection">
-          <End Role="Collection" Type="Self.Collection" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Collection">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDCollection" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_ManufactureCountry">
-          <End Role="ManufactureCountry" Type="Self.ManufactureCountry" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ManufactureCountry">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDManufacturerCountry" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Material">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDMaterial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Season">
-          <End Role="Season" Type="Self.Season" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Season">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDSeason" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Style">
-          <End Role="Style" Type="Self.Style" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Style">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDStyle" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductColor_Color">
-          <End Role="Color" Type="Self.Color" Multiplicity="1" />
-          <End Role="ProductColor" Type="Self.ProductColor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Color">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductColor">
-              <PropertyRef Name="IDColor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductColor_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductColor" Type="Self.ProductColor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductColor">
+            <Dependent Role="ProductPhoto">
               <PropertyRef Name="IDProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SizeProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK_SizeProduct_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
           <End Role="SizeProduct" Type="Self.SizeProduct" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="Clothes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SizeProduct">
@@ -484,11 +384,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SuitableProducts_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK_SuitableProducts_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
           <End Role="SuitableProducts" Type="Self.SuitableProducts" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="Clothes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SuitableProducts">
@@ -496,11 +396,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SuitableProducts_Product1">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK_SuitableProducts_Clothes1">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
           <End Role="SuitableProducts" Type="Self.SuitableProducts" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="Clothes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SuitableProducts">
@@ -540,59 +440,46 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище SportswearStoreModelContainer">
-          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bucket" EntityType="Self.Bucket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryProduct" EntityType="Self.CategoryProduct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clothes" EntityType="Self.Clothes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Collection" EntityType="Self.Collection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Color" EntityType="Self.Color" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Composition" EntityType="Self.Composition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompositionOfTheMaterial" EntityType="Self.CompositionOfTheMaterial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="House" EntityType="Self.House" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ManufactureCountry" EntityType="Self.ManufactureCountry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductColor" EntityType="Self.ProductColor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleUser" EntityType="Self.RoleUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Season" EntityType="Self.Season" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Size" EntityType="Self.Size" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SizeProduct" EntityType="Self.SizeProduct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Style" EntityType="Self.Style" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuitableProducts" EntityType="Self.SuitableProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ColorProductPhoto" EntityType="Self.ColorProductPhoto" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="ProductPhoto" EntityType="Self.ProductPhoto" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [ColorProductPhoto].[IDColorPhoto] AS [IDColorPhoto], 
-    [ColorProductPhoto].[PhotoPath] AS [PhotoPath]
-    FROM [dbo].[ColorProductPhoto] AS [ColorProductPhoto]</DefiningQuery>
+    [ProductPhoto].[IDProduct] AS [IDProduct], 
+    [ProductPhoto].[PhotoPath] AS [PhotoPath]
+    FROM [dbo].[ProductPhoto] AS [ProductPhoto]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_Address_House" Association="Self.FK_Address_House">
-            <End Role="House" EntitySet="House" />
-            <End Role="Address" EntitySet="Address" />
-          </AssociationSet>
           <AssociationSet Name="FK_Bucket_Client" Association="Self.FK_Bucket_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="Bucket" EntitySet="Bucket" />
           </AssociationSet>
-          <AssociationSet Name="FK_Bucket_Product" Association="Self.FK_Bucket_Product">
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_Bucket_Clothes" Association="Self.FK_Bucket_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
             <End Role="Bucket" EntitySet="Bucket" />
           </AssociationSet>
           <AssociationSet Name="FK_CategoryProduct_Category" Association="Self.FK_CategoryProduct_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="CategoryProduct" EntitySet="CategoryProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK_CategoryProduct_Product" Association="Self.FK_CategoryProduct_Product">
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_CategoryProduct_Clothes" Association="Self.FK_CategoryProduct_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
             <End Role="CategoryProduct" EntitySet="CategoryProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Client_Address" Association="Self.FK_Client_Address">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="Client" EntitySet="Client" />
           </AssociationSet>
           <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
             <End Role="Gender" EntitySet="Gender" />
@@ -602,9 +489,29 @@
             <End Role="RoleUser" EntitySet="RoleUser" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_ColorProductPhoto_ProductColor" Association="Self.FK_ColorProductPhoto_ProductColor">
-            <End Role="ProductColor" EntitySet="ProductColor" />
-            <End Role="ColorProductPhoto" EntitySet="ColorProductPhoto" />
+          <AssociationSet Name="FK_Clothes_Collection" Association="Self.FK_Clothes_Collection">
+            <End Role="Collection" EntitySet="Collection" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Color" Association="Self.FK_Clothes_Color">
+            <End Role="Color" EntitySet="Color" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_ManufactureCountry" Association="Self.FK_Clothes_ManufactureCountry">
+            <End Role="ManufactureCountry" EntitySet="ManufactureCountry" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Material" Association="Self.FK_Clothes_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Season" Association="Self.FK_Clothes_Season">
+            <End Role="Season" EntitySet="Season" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Style" Association="Self.FK_Clothes_Style">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="Clothes" EntitySet="Clothes" />
           </AssociationSet>
           <AssociationSet Name="FK_CompositionOfTheMaterial_Composition" Association="Self.FK_CompositionOfTheMaterial_Composition">
             <End Role="Composition" EntitySet="Composition" />
@@ -614,76 +521,32 @@
             <End Role="Material" EntitySet="Material" />
             <End Role="CompositionOfTheMaterial" EntitySet="CompositionOfTheMaterial" />
           </AssociationSet>
-          <AssociationSet Name="FK_House_City" Association="Self.FK_House_City">
-            <End Role="City" EntitySet="City" />
-            <End Role="House" EntitySet="House" />
+          <AssociationSet Name="FK_ProductPhoto_Clothes" Association="Self.FK_ProductPhoto_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="ProductPhoto" EntitySet="ProductPhoto" />
           </AssociationSet>
-          <AssociationSet Name="FK_House_Street" Association="Self.FK_House_Street">
-            <End Role="Street" EntitySet="Street" />
-            <End Role="House" EntitySet="House" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Collection" Association="Self.FK_Product_Collection">
-            <End Role="Collection" EntitySet="Collection" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_ManufactureCountry" Association="Self.FK_Product_ManufactureCountry">
-            <End Role="ManufactureCountry" EntitySet="ManufactureCountry" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Material" Association="Self.FK_Product_Material">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Season" Association="Self.FK_Product_Season">
-            <End Role="Season" EntitySet="Season" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Style" Association="Self.FK_Product_Style">
-            <End Role="Style" EntitySet="Style" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductColor_Color" Association="Self.FK_ProductColor_Color">
-            <End Role="Color" EntitySet="Color" />
-            <End Role="ProductColor" EntitySet="ProductColor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductColor_Product" Association="Self.FK_ProductColor_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductColor" EntitySet="ProductColor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SizeProduct_Product" Association="Self.FK_SizeProduct_Product">
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_SizeProduct_Clothes" Association="Self.FK_SizeProduct_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
             <End Role="SizeProduct" EntitySet="SizeProduct" />
           </AssociationSet>
           <AssociationSet Name="FK_SizeProduct_Size" Association="Self.FK_SizeProduct_Size">
             <End Role="Size" EntitySet="Size" />
             <End Role="SizeProduct" EntitySet="SizeProduct" />
           </AssociationSet>
-          <AssociationSet Name="FK_SuitableProducts_Product" Association="Self.FK_SuitableProducts_Product">
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_SuitableProducts_Clothes" Association="Self.FK_SuitableProducts_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
             <End Role="SuitableProducts" EntitySet="SuitableProducts" />
           </AssociationSet>
-          <AssociationSet Name="FK_SuitableProducts_Product1" Association="Self.FK_SuitableProducts_Product1">
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_SuitableProducts_Clothes1" Association="Self.FK_SuitableProducts_Clothes1">
+            <End Role="Clothes" EntitySet="Clothes" />
             <End Role="SuitableProducts" EntitySet="SuitableProducts" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SportswearStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Entrance" Type="Int32" Nullable="false" />
-          <Property Name="Flat" Type="Int32" Nullable="false" />
-          <Property Name="Floor" Type="Int32" Nullable="false" />
-          <Property Name="IDHouse" Type="Int32" Nullable="false" />
-          <Property Name="MailIndex" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="House" Relationship="Self.FK_Address_House" FromRole="Address" ToRole="House" />
-          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Address" FromRole="Address" ToRole="Client" />
-        </EntityType>
         <EntityType Name="Bucket">
           <Key>
             <PropertyRef Name="ID" />
@@ -692,7 +555,7 @@
           <Property Name="IDClient" Type="Int32" Nullable="false" />
           <Property Name="IDProduct" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Bucket_Client" FromRole="Bucket" ToRole="Client" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Bucket_Product" FromRole="Bucket" ToRole="Product" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Bucket_Clothes" FromRole="Bucket" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -700,15 +563,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameCategoryProduct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.CategoryProduct" FromRole="Category" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="City">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="House" Relationship="Self.FK_House_City" FromRole="City" ToRole="House" />
+          <NavigationProperty Name="Clothes" Relationship="Self.CategoryProduct" FromRole="Category" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -722,16 +577,44 @@
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IDAddress" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DateRegistration" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Login" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="IDRole" Type="Int32" Nullable="false" />
           <Property Name="IDGender" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Address" Relationship="Self.FK_Client_Address" FromRole="Client" ToRole="Address" />
           <NavigationProperty Name="Bucket" Relationship="Self.FK_Bucket_Client" FromRole="Client" ToRole="Bucket" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
           <NavigationProperty Name="RoleUser" Relationship="Self.FK_Client_RoleUser" FromRole="Client" ToRole="RoleUser" />
+        </EntityType>
+        <EntityType Name="Clothes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameProduct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Articul" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDColor" Type="Int32" Nullable="false" />
+          <Property Name="IDCollection" Type="Int32" Nullable="false" />
+          <Property Name="IDCountry" Type="Int32" Nullable="false" />
+          <Property Name="IDSeason" Type="Int32" Nullable="false" />
+          <Property Name="IDMaterial" Type="Int32" Nullable="false" />
+          <Property Name="IDStyle" Type="Int32" Nullable="false" />
+          <Property Name="MainPhoto" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Bucket" Relationship="Self.FK_Bucket_Clothes" FromRole="Clothes" ToRole="Bucket" />
+          <NavigationProperty Name="Collection" Relationship="Self.FK_Clothes_Collection" FromRole="Clothes" ToRole="Collection" />
+          <NavigationProperty Name="Color" Relationship="Self.FK_Clothes_Color" FromRole="Clothes" ToRole="Color" />
+          <NavigationProperty Name="ManufactureCountry" Relationship="Self.FK_Clothes_ManufactureCountry" FromRole="Clothes" ToRole="ManufactureCountry" />
+          <NavigationProperty Name="Material" Relationship="Self.FK_Clothes_Material" FromRole="Clothes" ToRole="Material" />
+          <NavigationProperty Name="Season" Relationship="Self.FK_Clothes_Season" FromRole="Clothes" ToRole="Season" />
+          <NavigationProperty Name="Style" Relationship="Self.FK_Clothes_Style" FromRole="Clothes" ToRole="Style" />
+          <NavigationProperty Name="ProductPhoto" Relationship="Self.FK_ProductPhoto_Clothes" FromRole="Clothes" ToRole="ProductPhoto" />
+          <NavigationProperty Name="Category" Relationship="Self.CategoryProduct" FromRole="Clothes" ToRole="Category" />
+          <NavigationProperty Name="Size" Relationship="Self.SizeProduct" FromRole="Clothes" ToRole="Size" />
+          <NavigationProperty Name="Clothes1" Relationship="Self.SuitableProducts" FromRole="Clothes" ToRole="Clothes1" />
+          <NavigationProperty Name="Clothes2" Relationship="Self.SuitableProducts" FromRole="Clothes1" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="Collection">
           <Key>
@@ -739,7 +622,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameCollection" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Collection" FromRole="Collection" ToRole="Product" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_Collection" FromRole="Collection" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="Color">
           <Key>
@@ -748,7 +631,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameColor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HEX" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ProductColor" Relationship="Self.FK_ProductColor_Color" FromRole="Color" ToRole="ProductColor" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_Color" FromRole="Color" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="Composition">
           <Key>
@@ -777,25 +660,13 @@
           <Property Name="NameGender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Client_Gender" FromRole="Gender" ToRole="Client" />
         </EntityType>
-        <EntityType Name="House">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDStreet" Type="Int32" Nullable="false" />
-          <Property Name="HouseNumber" Type="Int32" Nullable="false" />
-          <Property Name="IDCity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Address" Relationship="Self.FK_Address_House" FromRole="House" ToRole="Address" />
-          <NavigationProperty Name="City" Relationship="Self.FK_House_City" FromRole="House" ToRole="City" />
-          <NavigationProperty Name="Street" Relationship="Self.FK_House_Street" FromRole="House" ToRole="Street" />
-        </EntityType>
         <EntityType Name="ManufactureCountry">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_ManufactureCountry" FromRole="ManufactureCountry" ToRole="Product" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_ManufactureCountry" FromRole="ManufactureCountry" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="Material">
           <Key>
@@ -803,45 +674,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameMaterial" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_Material" FromRole="Material" ToRole="Clothes" />
           <NavigationProperty Name="CompositionOfTheMaterial" Relationship="Self.FK_CompositionOfTheMaterial_Material" FromRole="Material" ToRole="CompositionOfTheMaterial" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Material" FromRole="Material" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameProduct" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ArticleProduct" Type="String" MaxLength="8" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="IDCollection" Type="Int32" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="IDMaterial" Type="Int32" Nullable="false" />
-          <Property Name="IDStyle" Type="Int32" Nullable="false" />
-          <Property Name="IDSeason" Type="Int32" Nullable="false" />
-          <Property Name="IDManufacturerCountry" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Bucket" Relationship="Self.FK_Bucket_Product" FromRole="Product" ToRole="Bucket" />
-          <NavigationProperty Name="Collection" Relationship="Self.FK_Product_Collection" FromRole="Product" ToRole="Collection" />
-          <NavigationProperty Name="ManufactureCountry" Relationship="Self.FK_Product_ManufactureCountry" FromRole="Product" ToRole="ManufactureCountry" />
-          <NavigationProperty Name="Material" Relationship="Self.FK_Product_Material" FromRole="Product" ToRole="Material" />
-          <NavigationProperty Name="Season" Relationship="Self.FK_Product_Season" FromRole="Product" ToRole="Season" />
-          <NavigationProperty Name="Style" Relationship="Self.FK_Product_Style" FromRole="Product" ToRole="Style" />
-          <NavigationProperty Name="ProductColor" Relationship="Self.FK_ProductColor_Product" FromRole="Product" ToRole="ProductColor" />
-          <NavigationProperty Name="Category" Relationship="Self.CategoryProduct" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="Size" Relationship="Self.SizeProduct" FromRole="Product" ToRole="Size" />
-          <NavigationProperty Name="Product1" Relationship="Self.SuitableProducts" FromRole="Product" ToRole="Product1" />
-          <NavigationProperty Name="Product2" Relationship="Self.SuitableProducts" FromRole="Product1" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="ProductColor">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IDProduct" Type="Int32" Nullable="false" />
-          <Property Name="IDColor" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Color" Relationship="Self.FK_ProductColor_Color" FromRole="ProductColor" ToRole="Color" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductColor_Product" FromRole="ProductColor" ToRole="Product" />
-          <NavigationProperty Name="ColorProductPhoto" Relationship="Self.FK_ColorProductPhoto_ProductColor" FromRole="ProductColor" ToRole="ColorProductPhoto" />
         </EntityType>
         <EntityType Name="RoleUser">
           <Key>
@@ -857,7 +691,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SeasonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Season" FromRole="Season" ToRole="Product" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_Season" FromRole="Season" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="Size">
           <Key>
@@ -865,15 +699,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameSize" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.SizeProduct" FromRole="Size" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Street">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameStreet" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="House" Relationship="Self.FK_House_Street" FromRole="Street" ToRole="House" />
+          <NavigationProperty Name="Clothes" Relationship="Self.SizeProduct" FromRole="Size" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="Style">
           <Key>
@@ -881,7 +707,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StyleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Style" FromRole="Style" ToRole="Product" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_Clothes_Style" FromRole="Style" ToRole="Clothes" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -893,39 +719,15 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="ColorProductPhoto">
+        <EntityType Name="ProductPhoto">
           <Key>
-            <PropertyRef Name="IDColorPhoto" />
+            <PropertyRef Name="IDProduct" />
             <PropertyRef Name="PhotoPath" />
           </Key>
-          <Property Name="IDColorPhoto" Type="Int32" Nullable="false" />
+          <Property Name="IDProduct" Type="Int32" Nullable="false" />
           <Property Name="PhotoPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ProductColor" Relationship="Self.FK_ColorProductPhoto_ProductColor" FromRole="ColorProductPhoto" ToRole="ProductColor" />
+          <NavigationProperty Name="Clothes" Relationship="Self.FK_ProductPhoto_Clothes" FromRole="ProductPhoto" ToRole="Clothes" />
         </EntityType>
-        <Association Name="FK_Address_House">
-          <End Role="House" Type="Self.House" Multiplicity="1" />
-          <End Role="Address" Type="Self.Address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="House">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Address">
-              <PropertyRef Name="IDHouse" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Client_Address">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="Client" Type="Self.Client" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Client">
-              <PropertyRef Name="IDAddress" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Bucket_Client">
           <End Role="Client" Type="Self.Client" Multiplicity="1" />
           <End Role="Bucket" Type="Self.Bucket" Multiplicity="*" />
@@ -938,27 +740,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Bucket_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+        <Association Name="FK_Bucket_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
           <End Role="Bucket" Type="Self.Bucket" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Product">
+            <Principal Role="Clothes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Bucket">
               <PropertyRef Name="IDProduct" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_House_City">
-          <End Role="City" Type="Self.City" Multiplicity="1" />
-          <End Role="House" Type="Self.House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="City">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="IDCity" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -986,27 +776,87 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_Collection">
+        <Association Name="FK_Clothes_Collection">
           <End Role="Collection" Type="Self.Collection" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Collection">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Product">
+            <Dependent Role="Clothes">
               <PropertyRef Name="IDCollection" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductColor_Color">
+        <Association Name="FK_Clothes_Color">
           <End Role="Color" Type="Self.Color" Multiplicity="1" />
-          <End Role="ProductColor" Type="Self.ProductColor" Multiplicity="*" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Color">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="ProductColor">
+            <Dependent Role="Clothes">
               <PropertyRef Name="IDColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_ManufactureCountry">
+          <End Role="ManufactureCountry" Type="Self.ManufactureCountry" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManufactureCountry">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Season">
+          <End Role="Season" Type="Self.Season" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Season">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDSeason" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clothes_Style">
+          <End Role="Style" Type="Self.Style" Multiplicity="1" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clothes">
+              <PropertyRef Name="IDStyle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPhoto_Clothes">
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="1" />
+          <End Role="ProductPhoto" Type="Self.ProductPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clothes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductPhoto">
+              <PropertyRef Name="IDProduct" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1034,144 +884,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_House_Street">
-          <End Role="Street" Type="Self.Street" Multiplicity="1" />
-          <End Role="House" Type="Self.House" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Street">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="House">
-              <PropertyRef Name="IDStreet" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_ManufactureCountry">
-          <End Role="ManufactureCountry" Type="Self.ManufactureCountry" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ManufactureCountry">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDManufacturerCountry" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Material">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDMaterial" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Season">
-          <End Role="Season" Type="Self.Season" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Season">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDSeason" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Product_Style">
-          <End Role="Style" Type="Self.Style" Multiplicity="1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Style">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="IDStyle" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductColor_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ProductColor" Type="Self.ProductColor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductColor">
-              <PropertyRef Name="IDProduct" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ColorProductPhoto_ProductColor">
-          <End Role="ProductColor" Type="Self.ProductColor" Multiplicity="1" />
-          <End Role="ColorProductPhoto" Type="Self.ColorProductPhoto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductColor">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ColorProductPhoto">
-              <PropertyRef Name="IDColorPhoto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="CategoryProduct">
           <End Role="Category" Type="Self.Category" Multiplicity="*" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
         </Association>
         <Association Name="SizeProduct">
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
           <End Role="Size" Type="Self.Size" Multiplicity="*" />
         </Association>
         <Association Name="SuitableProducts">
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <End Role="Product1" Type="Self.Product" Multiplicity="*" />
+          <End Role="Clothes" Type="Self.Clothes" Multiplicity="*" />
+          <End Role="Clothes1" Type="Self.Clothes" Multiplicity="*" />
         </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Address" EntityType="Self.Address" />
           <EntitySet Name="Bucket" EntityType="Self.Bucket" />
           <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Clothes" EntityType="Self.Clothes" />
           <EntitySet Name="Collection" EntityType="Self.Collection" />
           <EntitySet Name="Color" EntityType="Self.Color" />
           <EntitySet Name="Composition" EntityType="Self.Composition" />
           <EntitySet Name="CompositionOfTheMaterial" EntityType="Self.CompositionOfTheMaterial" />
           <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="House" EntityType="Self.House" />
           <EntitySet Name="ManufactureCountry" EntityType="Self.ManufactureCountry" />
           <EntitySet Name="Material" EntityType="Self.Material" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="ProductColor" EntityType="Self.ProductColor" />
           <EntitySet Name="RoleUser" EntityType="Self.RoleUser" />
           <EntitySet Name="Season" EntityType="Self.Season" />
           <EntitySet Name="Size" EntityType="Self.Size" />
-          <EntitySet Name="Street" EntityType="Self.Street" />
           <EntitySet Name="Style" EntityType="Self.Style" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="ColorProductPhoto" EntityType="Self.ColorProductPhoto" />
-          <AssociationSet Name="FK_Address_House" Association="Self.FK_Address_House">
-            <End Role="House" EntitySet="House" />
-            <End Role="Address" EntitySet="Address" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Client_Address" Association="Self.FK_Client_Address">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="Client" EntitySet="Client" />
-          </AssociationSet>
+          <EntitySet Name="ProductPhoto" EntityType="Self.ProductPhoto" />
           <AssociationSet Name="FK_Bucket_Client" Association="Self.FK_Bucket_Client">
             <End Role="Client" EntitySet="Client" />
             <End Role="Bucket" EntitySet="Bucket" />
           </AssociationSet>
-          <AssociationSet Name="FK_Bucket_Product" Association="Self.FK_Bucket_Product">
-            <End Role="Product" EntitySet="Product" />
+          <AssociationSet Name="FK_Bucket_Clothes" Association="Self.FK_Bucket_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
             <End Role="Bucket" EntitySet="Bucket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_House_City" Association="Self.FK_House_City">
-            <End Role="City" EntitySet="City" />
-            <End Role="House" EntitySet="House" />
           </AssociationSet>
           <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
             <End Role="Gender" EntitySet="Gender" />
@@ -1181,13 +930,33 @@
             <End Role="RoleUser" EntitySet="RoleUser" />
             <End Role="Client" EntitySet="Client" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_Collection" Association="Self.FK_Product_Collection">
+          <AssociationSet Name="FK_Clothes_Collection" Association="Self.FK_Clothes_Collection">
             <End Role="Collection" EntitySet="Collection" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Clothes" EntitySet="Clothes" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductColor_Color" Association="Self.FK_ProductColor_Color">
+          <AssociationSet Name="FK_Clothes_Color" Association="Self.FK_Clothes_Color">
             <End Role="Color" EntitySet="Color" />
-            <End Role="ProductColor" EntitySet="ProductColor" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_ManufactureCountry" Association="Self.FK_Clothes_ManufactureCountry">
+            <End Role="ManufactureCountry" EntitySet="ManufactureCountry" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Material" Association="Self.FK_Clothes_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Season" Association="Self.FK_Clothes_Season">
+            <End Role="Season" EntitySet="Season" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clothes_Style" Association="Self.FK_Clothes_Style">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="Clothes" EntitySet="Clothes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPhoto_Clothes" Association="Self.FK_ProductPhoto_Clothes">
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="ProductPhoto" EntitySet="ProductPhoto" />
           </AssociationSet>
           <AssociationSet Name="FK_CompositionOfTheMaterial_Composition" Association="Self.FK_CompositionOfTheMaterial_Composition">
             <End Role="Composition" EntitySet="Composition" />
@@ -1197,45 +966,17 @@
             <End Role="Material" EntitySet="Material" />
             <End Role="CompositionOfTheMaterial" EntitySet="CompositionOfTheMaterial" />
           </AssociationSet>
-          <AssociationSet Name="FK_House_Street" Association="Self.FK_House_Street">
-            <End Role="Street" EntitySet="Street" />
-            <End Role="House" EntitySet="House" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_ManufactureCountry" Association="Self.FK_Product_ManufactureCountry">
-            <End Role="ManufactureCountry" EntitySet="ManufactureCountry" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Material" Association="Self.FK_Product_Material">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Season" Association="Self.FK_Product_Season">
-            <End Role="Season" EntitySet="Season" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_Style" Association="Self.FK_Product_Style">
-            <End Role="Style" EntitySet="Style" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductColor_Product" Association="Self.FK_ProductColor_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ProductColor" EntitySet="ProductColor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ColorProductPhoto_ProductColor" Association="Self.FK_ColorProductPhoto_ProductColor">
-            <End Role="ProductColor" EntitySet="ProductColor" />
-            <End Role="ColorProductPhoto" EntitySet="ColorProductPhoto" />
-          </AssociationSet>
           <AssociationSet Name="CategoryProduct" Association="Self.CategoryProduct">
             <End Role="Category" EntitySet="Category" />
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Clothes" EntitySet="Clothes" />
           </AssociationSet>
           <AssociationSet Name="SizeProduct" Association="Self.SizeProduct">
-            <End Role="Product" EntitySet="Product" />
+            <End Role="Clothes" EntitySet="Clothes" />
             <End Role="Size" EntitySet="Size" />
           </AssociationSet>
           <AssociationSet Name="SuitableProducts" Association="Self.SuitableProducts">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Product1" EntitySet="Product" />
+            <End Role="Clothes" EntitySet="Clothes" />
+            <End Role="Clothes1" EntitySet="Clothes" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -1285,18 +1026,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище SportswearStoreModelContainer" CdmEntityContainer="Entities">
-          <EntitySetMapping Name="Address">
-            <EntityTypeMapping TypeName="SportswearStoreModel.Address">
-              <MappingFragment StoreEntitySet="Address">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Entrance" ColumnName="Entrance" />
-                <ScalarProperty Name="Flat" ColumnName="Flat" />
-                <ScalarProperty Name="Floor" ColumnName="Floor" />
-                <ScalarProperty Name="IDHouse" ColumnName="IDHouse" />
-                <ScalarProperty Name="MailIndex" ColumnName="MailIndex" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Bucket">
             <EntityTypeMapping TypeName="SportswearStoreModel.Bucket">
               <MappingFragment StoreEntitySet="Bucket">
@@ -1314,14 +1043,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="SportswearStoreModel.City">
-              <MappingFragment StoreEntitySet="City">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="SportswearStoreModel.Client">
               <MappingFragment StoreEntitySet="Client">
@@ -1333,12 +1054,30 @@
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="IDAddress" ColumnName="IDAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="DateRegistration" ColumnName="DateRegistration" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IDRole" ColumnName="IDRole" />
                 <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clothes">
+            <EntityTypeMapping TypeName="SportswearStoreModel.Clothes">
+              <MappingFragment StoreEntitySet="Clothes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+                <ScalarProperty Name="Articul" ColumnName="Articul" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IDColor" ColumnName="IDColor" />
+                <ScalarProperty Name="IDCollection" ColumnName="IDCollection" />
+                <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+                <ScalarProperty Name="IDSeason" ColumnName="IDSeason" />
+                <ScalarProperty Name="IDMaterial" ColumnName="IDMaterial" />
+                <ScalarProperty Name="IDStyle" ColumnName="IDStyle" />
+                <ScalarProperty Name="MainPhoto" ColumnName="MainPhoto" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1384,16 +1123,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="House">
-            <EntityTypeMapping TypeName="SportswearStoreModel.House">
-              <MappingFragment StoreEntitySet="House">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDStreet" ColumnName="IDStreet" />
-                <ScalarProperty Name="HouseNumber" ColumnName="HouseNumber" />
-                <ScalarProperty Name="IDCity" ColumnName="IDCity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ManufactureCountry">
             <EntityTypeMapping TypeName="SportswearStoreModel.ManufactureCountry">
               <MappingFragment StoreEntitySet="ManufactureCountry">
@@ -1407,31 +1136,6 @@
               <MappingFragment StoreEntitySet="Material">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NameMaterial" ColumnName="NameMaterial" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="SportswearStoreModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
-                <ScalarProperty Name="ArticleProduct" ColumnName="ArticleProduct" />
-                <ScalarProperty Name="IDCollection" ColumnName="IDCollection" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IDMaterial" ColumnName="IDMaterial" />
-                <ScalarProperty Name="IDStyle" ColumnName="IDStyle" />
-                <ScalarProperty Name="IDSeason" ColumnName="IDSeason" />
-                <ScalarProperty Name="IDManufacturerCountry" ColumnName="IDManufacturerCountry" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductColor">
-            <EntityTypeMapping TypeName="SportswearStoreModel.ProductColor">
-              <MappingFragment StoreEntitySet="ProductColor">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
-                <ScalarProperty Name="IDColor" ColumnName="IDColor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1459,14 +1163,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Street">
-            <EntityTypeMapping TypeName="SportswearStoreModel.Street">
-              <MappingFragment StoreEntitySet="Street">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NameStreet" ColumnName="NameStreet" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Style">
             <EntityTypeMapping TypeName="SportswearStoreModel.Style">
               <MappingFragment StoreEntitySet="Style">
@@ -1486,10 +1182,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ColorProductPhoto">
-            <EntityTypeMapping TypeName="SportswearStoreModel.ColorProductPhoto">
-              <MappingFragment StoreEntitySet="ColorProductPhoto">
-                <ScalarProperty Name="IDColorPhoto" ColumnName="IDColorPhoto" />
+          <EntitySetMapping Name="ProductPhoto">
+            <EntityTypeMapping TypeName="SportswearStoreModel.ProductPhoto">
+              <MappingFragment StoreEntitySet="ProductPhoto">
+                <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
                 <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1498,12 +1194,12 @@
             <EndProperty Name="Category">
               <ScalarProperty Name="ID" ColumnName="IDCategory" />
             </EndProperty>
-            <EndProperty Name="Product">
+            <EndProperty Name="Clothes">
               <ScalarProperty Name="ID" ColumnName="IDProduct" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="SizeProduct" TypeName="SportswearStoreModel.SizeProduct" StoreEntitySet="SizeProduct">
-            <EndProperty Name="Product">
+            <EndProperty Name="Clothes">
               <ScalarProperty Name="ID" ColumnName="IDProduct" />
             </EndProperty>
             <EndProperty Name="Size">
@@ -1511,10 +1207,10 @@
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="SuitableProducts" TypeName="SportswearStoreModel.SuitableProducts" StoreEntitySet="SuitableProducts">
-            <EndProperty Name="Product">
+            <EndProperty Name="Clothes">
               <ScalarProperty Name="ID" ColumnName="IDMainProduct" />
             </EndProperty>
-            <EndProperty Name="Product1">
+            <EndProperty Name="Clothes1">
               <ScalarProperty Name="ID" ColumnName="IDSubProduct" />
             </EndProperty>
           </AssociationSetMapping>

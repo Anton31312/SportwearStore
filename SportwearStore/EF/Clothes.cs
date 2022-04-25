@@ -12,46 +12,49 @@ namespace SportwearStore.EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Clothes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public Clothes()
         {
             this.Bucket = new HashSet<Bucket>();
-            this.ProductColor = new HashSet<ProductColor>();
+            this.ProductPhoto = new HashSet<ProductPhoto>();
             this.Category = new HashSet<Category>();
             this.Size = new HashSet<Size>();
-            this.Product1 = new HashSet<Product>();
-            this.Product2 = new HashSet<Product>();
+            this.Clothes1 = new HashSet<Clothes>();
+            this.Clothes2 = new HashSet<Clothes>();
         }
     
         public int ID { get; set; }
         public string NameProduct { get; set; }
-        public string ArticleProduct { get; set; }
-        public int IDCollection { get; set; }
+        public string Articul { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        public int IDColor { get; set; }
+        public int IDCollection { get; set; }
+        public int IDCountry { get; set; }
+        public int IDSeason { get; set; }
         public int IDMaterial { get; set; }
         public int IDStyle { get; set; }
-        public int IDSeason { get; set; }
-        public int IDManufacturerCountry { get; set; }
+        public string MainPhoto { get; set; }
+        public decimal Price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bucket> Bucket { get; set; }
         public virtual Collection Collection { get; set; }
+        public virtual Color Color { get; set; }
         public virtual ManufactureCountry ManufactureCountry { get; set; }
         public virtual Material Material { get; set; }
         public virtual Season Season { get; set; }
         public virtual Style Style { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductColor> ProductColor { get; set; }
+        public virtual ICollection<ProductPhoto> ProductPhoto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Size> Size { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product1 { get; set; }
+        public virtual ICollection<Clothes> Clothes1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Product2 { get; set; }
+        public virtual ICollection<Clothes> Clothes2 { get; set; }
     }
 }

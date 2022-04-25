@@ -21,7 +21,7 @@ namespace SportwearStore.Windows
     /// </summary>
     public partial class SweatshirtWindow : Window
     {
-        List<Product> productList = new List<Product>();
+        List<Clothes> productList = new List<Clothes>();
 
         public SweatshirtWindow()
         {
@@ -32,9 +32,9 @@ namespace SportwearStore.Windows
 
         private void Filter()
         {
-            productList = AppData.Context.Product.ToList();
-            productList = productList.
-                            Where(i => i.NameProduct.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
+            productList = AppData.Context.Clothes.ToList();
+            //productList = productList.
+            //                Where(i => i.NameProduct.ToLower().Contains(txtSearch.Text.ToLower())).ToList();
 
             lvProduct.ItemsSource = productList;
         }
@@ -48,7 +48,7 @@ namespace SportwearStore.Windows
 
         private void txtSearch_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            Filter();
+
         }
 
         private void txtSearch_MouseUp(object sender, MouseButtonEventArgs e)
