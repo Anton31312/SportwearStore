@@ -164,27 +164,48 @@
 
 
                 <!--Grid.Column = 0-->
-                <Image Grid.RowSpan="7"
-                       Margin="0 20 0 0"
-                       Source="/products/Top/seamless_top_black_1.jpeg"
-                       Height="700"
-                       Width="300"/>
+     
+                 <Image Source="{Binding Path=MainPhoto}"
+                        x:Name="imgMainPhoto"
+                        Height="700"
+                        Width="300"
+                        Grid.RowSpan="7"
+                        Margin="0 20 0 0"/>
+                        
 
-                <WrapPanel Grid.Row="7"
-                            Grid.RowSpan="2"
-                            Margin="50,20,50,10.333">
-                    <Image  Height="105"
-                            Width="71"
-                            Margin="0 0 10 0"
-                            Source="/products/Top/seamless_top_black_2.jpeg"/>
-                    <Image  Height="105"
-                            Width="109"
-                            Margin="0 0 10 0"
-                            Source="/products/Top/seamless_top_black_3.jpeg"/>
-                    <Image  Height="105"
-                            Width="68"
-                            Source="/products/Top/seamless_top_black_4.jpeg" RenderTransformOrigin="1.303,0.49"/>
-                </WrapPanel>
+
+                <ListView Grid.Row="7"
+                          Grid.RowSpan="3"
+                          x:Name="lvPhoto"
+                          Width="300">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" 
+                                        VerticalAlignment="Top" 
+                                        HorizontalAlignment="Left" 
+                                        Width="100"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Grid>
+                                    <Image x:Name="photoProduct"
+                                           Height="100">
+                                        <Image.Source>
+                                            <Binding Path ="ProductPhoto.PhotoPath">
+                                                <Binding.TargetNullValue>
+                                                    <ImageSource>/Source/picture.png</ImageSource>
+                                                </Binding.TargetNullValue>
+                                            </Binding>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
 
                 <!--Grid.Column = 1-->
@@ -194,6 +215,7 @@
                                 Margin="0 20 0 0"
                                Foreground="Gray"/>
                     <TextBlock Text="1540230"
+                               x:Name="tbArticul"
                                 Margin="0 20 0 0"/>
                 </WrapPanel>
 
@@ -205,6 +227,7 @@
                                 Margin="0 20 0 0"
                                Foreground="Gray"/>
                     <TextBlock Text="Viva"
+                               x:Name="tbCollection"
                                 Margin="0 20 0 0"/>
                 </WrapPanel>
 
@@ -213,6 +236,7 @@
                 <TextBlock Text="БЕСШОВНЫЙ ТОП С КОРОТКИМИ РУКАВАМИ"
                            Grid.Column="1"
                            Grid.Row="1"
+                           x:Name="tbProductName"
                            VerticalAlignment="Center"
                            FontSize="24"
                            TextWrapping="Wrap"/>
@@ -222,6 +246,7 @@
                 <TextBlock Text="Описание очень интересное"
                            Grid.Column="1"
                            Grid.Row="2"
+                           x:Name="tbDescription"
                            VerticalAlignment="Center"
                            FontSize="12"
                            TextWrapping="Wrap"/>
@@ -230,6 +255,7 @@
                 <TextBlock Text="2 000 Р"
                            Grid.Column="1"
                            Grid.Row="3"
+                           x:Name="tbCost"
                            VerticalAlignment="Center"
                            FontSize="24"
                            TextWrapping="Wrap"/>
@@ -244,6 +270,7 @@
                                Margin="0 5 0 10"/>
                         <ComboBox Height="30"
                                   Width="70" 
+                                  VerticalContentAlignment="Center"
                                   Cursor="Hand"
                                   x:Name="cmbSize"
                                   SelectionChanged="cmbSize_SelectionChanged"
@@ -387,12 +414,14 @@
                     <TextBlock Grid.Row="1" 
                                Text="Пропилен"
                                Grid.Column="1"
+                               x:Name="tbMaterial"
                                VerticalAlignment="Center"
                                FontSize="10"
                                Foreground="#545454"/>
 
                     <TextBlock Grid.Row="2"
                                Grid.Column="1"
+                               x:Name="tbCompositionMaterial"
                                Text="60% полиэстр, 35% пропилен, 5% эластан"
                                TextWrapping="Wrap"
                                VerticalAlignment="Center"
@@ -401,6 +430,7 @@
                     <TextBlock Grid.Row="3" 
                                Grid.Column="1"
                                Text="Спортивный"
+                               x:Name="tbStyle"
                                VerticalAlignment="Center"
                                FontSize="10"
                                Foreground="#545454"/>
@@ -408,6 +438,7 @@
                     <TextBlock Grid.Row="4" 
                                Grid.Column="1"
                                Text="На любой сезон"
+                               x:Name="tbSeason"
                                VerticalAlignment="Center"
                                FontSize="10"
                                Foreground="#545454"/>
@@ -415,6 +446,7 @@
                     <TextBlock Grid.Row="5" 
                                Grid.Column="1"
                                Text="Россия"
+                               x:Name="tbCountry"
                                VerticalAlignment="Center"
                                FontSize="10"
                                Foreground="#545454"/>

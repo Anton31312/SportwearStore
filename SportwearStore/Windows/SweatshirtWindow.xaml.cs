@@ -23,11 +23,64 @@ namespace SportwearStore.Windows
     {
         List<Clothes> productList = new List<Clothes>();
 
-        public SweatshirtWindow()
+        public SweatshirtWindow(int product)
         {
             InitializeComponent();
-
-            Filter();
+            if (product == 1)
+            {
+                tbSweat.TextDecorations = TextDecorations.Underline;
+                tbNameProduct.Text = "Свитшоты";
+                tbTights.TextDecorations = null;
+                tbTop.TextDecorations = null;
+                tbRash.TextDecorations = null;
+                tbCycling.TextDecorations = null;
+                productList = AppData.Context.Clothes.ToList();
+                lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("Свитшот"));
+            }
+            if (product == 2)
+            {
+                tbTop.TextDecorations = TextDecorations.Underline;
+                tbNameProduct.Text = "Топы";
+                tbSweat.TextDecorations = null;
+                tbRash.TextDecorations = null;
+                tbTights.TextDecorations = null;
+                tbCycling.TextDecorations = null;
+                productList = AppData.Context.Clothes.ToList();
+                lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("топ"));
+            }
+            if (product ==  3)
+            {
+                tbCycling.TextDecorations = TextDecorations.Underline;
+                tbNameProduct.Text = "Велосипедки";
+                tbSweat.TextDecorations = null;
+                tbTop.TextDecorations = null;
+                tbTights.TextDecorations = null;
+                tbRash.TextDecorations = null;
+                productList = AppData.Context.Clothes.ToList();
+                lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("велосипедки") || i.NameProduct.Contains("Велосипедки"));
+            }
+            if (product == 4)
+            {
+                tbTights.TextDecorations = TextDecorations.Underline;
+                tbNameProduct.Text = "Тайсты";
+                tbSweat.TextDecorations = null;
+                tbTop.TextDecorations = null;
+                tbRash.TextDecorations = null;
+                tbCycling.TextDecorations = null;
+                productList = AppData.Context.Clothes.ToList();
+                lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("Тайтсы") || i.NameProduct.Contains("тайтсы"));
+            }
+            if (product == 5)
+            {
+                tbRash.TextDecorations = TextDecorations.Underline;
+                tbNameProduct.Text = "Рашгарды";
+                tbSweat.TextDecorations = null;
+                tbTop.TextDecorations = null;
+                tbTights.TextDecorations = null;
+                tbCycling.TextDecorations = null;
+                productList = AppData.Context.Clothes.ToList();
+                lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("рашгард"));
+            }
         }
 
         private void Filter()
@@ -126,13 +179,6 @@ namespace SportwearStore.Windows
             lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("Тайтсы") || i.NameProduct.Contains("тайтсы"));
         }
 
-        private void lvProduct_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            ProductWindow productWindow = new ProductWindow();
-            this.Close();
-            productWindow.Show();
-        }
-
         private void tbSweat_MouseUp(object sender, MouseButtonEventArgs e)
         {
             tbSweat.TextDecorations = TextDecorations.Underline;
@@ -143,6 +189,19 @@ namespace SportwearStore.Windows
             tbCycling.TextDecorations = null;
             productList = AppData.Context.Clothes.ToList();
             lvProduct.ItemsSource = productList.Where(i => i.NameProduct.Contains("Свитшот"));
+        }
+
+        private void lvProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var choiseProduct = new EF.Clothes();
+
+            if (lvProduct.SelectedItem is EF.Clothes)
+            {
+                choiseProduct = lvProduct.SelectedItem as EF.Clothes;
+                ProductWindow productWindow = new ProductWindow(choiseProduct);
+                this.Close();
+                productWindow.Show();
+            }
         }
     }
 }

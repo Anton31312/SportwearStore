@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SportwearStore.EF;
+using SportwearStore.ClassHelper;
 
 namespace SportwearStore.Windows
 {
@@ -19,9 +21,38 @@ namespace SportwearStore.Windows
     /// </summary>
     public partial class ProductWindow : Window
     {
-        public ProductWindow()
+
+        EF.Clothes product = new EF.Clothes();
+
+        public ProductWindow(EF.Clothes clothes)
         {
             InitializeComponent();
+
+            product = clothes;
+            //заполнение ComboBox
+            cmbSize.ItemsSource = AppData.Context.Size.ToList();
+            cmbSize.DisplayMemberPath = "NameSize";
+            cmbSize.SelectedIndex = 0;
+
+            tbProductName.Text = product.NameProduct;
+            tbDescription.Text = product.Description;
+            tbCost.Text = product.GetCost;
+            tbArticul.Text = product.Articul;
+            tbCollection.Text = product.Collection.NameCollection;
+            tbMaterial.Text = product.Material.NameMaterial;
+            tbCountry.Text = product.ManufactureCountry.NameCountry;
+            tbSeason.Text = product.Season.SeasonName;
+            tbStyle.Text = product.Style.StyleName;
+
+            //добавление главного изображения
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri(product.MainPhoto, UriKind.Relative);
+            bi.EndInit();
+            imgMainPhoto.Source = bi;
+
+            //заполнения доп изображений
+            lvPhoto.ItemsSource = product.ProductPhoto.Where(i => i.IDProduct == product.ID);
         }
 
         private void tbMainPage_MouseUp(object sender, MouseButtonEventArgs e)
@@ -63,37 +94,37 @@ namespace SportwearStore.Windows
 
         private void tbSweat_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(1);
             this.Close();
             sweatshirtWindow.Show();
         }
 
         private void tbRash_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            RaschgardWindow raschgardWindow = new RaschgardWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(5);
             this.Close();
-            raschgardWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void tbCycling_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            CyclingShortsWindow cyclingShortsWindow = new CyclingShortsWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(3);
             this.Close();
-            cyclingShortsWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void tbTop_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            TopWindow topWindow = new TopWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(2);
             this.Close();
-            topWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void tbTights_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            TightsWindow tightsWindow = new TightsWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(4);
             this.Close();
-            tightsWindow.Show();
+            sweatshirtWindow.Show();
         }
     }
 }

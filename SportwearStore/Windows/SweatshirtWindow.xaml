@@ -169,7 +169,7 @@
                 <!--Grid.Row = 1 Border product-->
                 <ListView Grid.Row="1"
                           x:Name="lvProduct"
-                          MouseUp="lvProduct_MouseUp"
+                          MouseDoubleClick="lvProduct_MouseDoubleClick"
                           ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>

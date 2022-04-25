@@ -21,6 +21,7 @@ namespace SportwearStore.Windows
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -34,37 +35,37 @@ namespace SportwearStore.Windows
 
         private void borderSvit_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(1);
             this.Close();
             sweatshirtWindow.Show();
         }
 
         private void borderTop_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            TopWindow topWindow = new TopWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(2);
             this.Close();
-            topWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void borderBiker_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            CyclingShortsWindow cyclingShortsWindow = new CyclingShortsWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(3);
             this.Close();
-            cyclingShortsWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void borderTaytsi_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            TightsWindow tightsWindow = new TightsWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(4);
             this.Close();
-            tightsWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void borderRashgardy_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            RaschgardWindow raschgardWindow = new RaschgardWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(5);
             this.Close();
-            raschgardWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void tbMainPage_MouseUp(object sender, MouseButtonEventArgs e)
@@ -91,37 +92,37 @@ namespace SportwearStore.Windows
 
         private void tbSweat_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(1);
             this.Close();
             sweatshirtWindow.Show();
         }
 
         private void tbRash_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            RaschgardWindow raschgardWindow = new RaschgardWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(5);
             this.Close();
-            raschgardWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void tbCycling_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            CyclingShortsWindow cyclingShortsWindow = new CyclingShortsWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(3);
             this.Close();
-            cyclingShortsWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void tbTop_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            TopWindow topWindow = new TopWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(2);
             this.Close();
-            topWindow.Show();
+            sweatshirtWindow.Show();
         }
 
         private void tbTights_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            TightsWindow tightsWindow = new TightsWindow();
+            SweatshirtWindow sweatshirtWindow = new SweatshirtWindow(4);
             this.Close();
-            tightsWindow.Show();
+            sweatshirtWindow.Show();
         }
     }
 }
