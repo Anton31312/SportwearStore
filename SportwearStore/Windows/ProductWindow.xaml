@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SportwearStore.Windows"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="SportwearStore.Windows.ProductWindow"
         mc:Ignorable="d"
-        Title="ProductWindow"
+        Title="Viva Sportiva"
         MinHeight="1000"
         MinWidth="1000"
         Height="1000" 
